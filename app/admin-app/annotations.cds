@@ -44,10 +44,10 @@ annotate service.Voter with @(
 );
 
 annotate service.Voter with {
-    age @Common.Label : 'age'
+    age @Common.Label : '{i18n>Age}'
 };
 
 annotate service.Voter with {
-    gender @Common.Label : 'gender'
+    gender @Common.Label : '{i18n>Gender}'
 };
 

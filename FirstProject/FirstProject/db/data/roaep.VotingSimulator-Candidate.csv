@@ -1,5 +1,0 @@
-ID,firstName,lastName,gender,age,createdAt,createdBy,modifiedAt,modifiedBy,party
-1N,Nicusor,Dan,Male,48,2023-10-14T22:11:20+0000,Admin,2023-10-14T22:11:20+0000,Admin,Independent
-2C,Crin,Antonescu,Male,86,2023-10-14T22:11:20+0000,Admin,2023-10-14T22:11:20+0000,Admin,PSD-PNL-UDMR
-3V,Victor,Ponta,Male,57,2023-10-14T22:11:20+0000,Admin,2023-10-14T22:11:20+0000,Admin,Independent
-4E,Elena,Lasconi,Female,46,2023-10-14T22:11:20+0000,Admin,2023-10-14T22:11:20+0000,Admin,USR

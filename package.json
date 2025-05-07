@@ -9,8 +9,7 @@
     "@cap-js/hana": "^1",
     "@sap/cds": "^8.2",
     "@sap/xssec": "^4",
-    "express": "^4",
-    "FirstProject": "file:"
+    "express": "^4"
   },
   "devDependencies": {
     "@cap-js/sqlite": "^1",

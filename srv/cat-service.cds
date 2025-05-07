@@ -10,11 +10,11 @@ service VoterService {
             firstName,
             lastName,
             (
-                    select COUNT(ID) from vote.Voter
-                    where
-                        votedCanditade.ID = Candidate.ID
-                ) as totalVotes : Integer
-            }
+                select COUNT(ID) from vote.Voter
+                where
+                    votedCanditade.ID = Candidate.ID
+            ) as totalVotes : Integer
+        }
 
 }
 
@@ -25,31 +25,29 @@ service AnalyticService {
 }
 
 
-annotate AnalyticService.Resulsts with @(
-   Aggregation.ApplySupported              : {
-        Transformations       : [
-            'aggregate',
-            'topcount',
-            'bottomcount',
-            'identity',
-            'concat',
-            'groupby',
-            'filter',
-            'expand',
-            'search'
-        ],
+annotate AnalyticService.Resulsts with @(Aggregation.ApplySupported: {
+    Transformations       : [
+        'aggregate',
+        'topcount',
+        'bottomcount',
+        'identity',
+        'concat',
+        'groupby',
+        'filter',
+        'expand',
+        'search'
+    ],
 
-        Rollup: #None,  // Specify the rollup type if needed
-    PropertyRestrictions: true,  // Enforce restrictions on properties for aggregation or grouping
-    GroupableProperties: [
+    Rollup                : #None,
+    // Specify the rollup type if needed
+    PropertyRestrictions  : true,
+    // Enforce restrictions on properties for aggregation or grouping
+    GroupableProperties   : [
         votedCanditade_ID,
-        votingSection_ID    
+        votingSection_ID
     ],
-    AggregatableProperties: [
-        { Property: ID }
-    ],
-   }
-);
+    AggregatableProperties: [{Property: ID}],
+});
 
 service AdminService {
 
@@ -62,3 +60,5 @@ service AdminService {
     entity VotingSection as projection on vote.VotingSection;
     entity Candidate     as projection on vote.Candidate;
 }
+
+annotate AdminService.Voter with @odata.draft.enabled;

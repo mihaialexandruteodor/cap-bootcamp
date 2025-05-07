@@ -15,7 +15,6 @@
   },
   "scripts": {
     "start": "cds-serve",
-    "watch-project1": "cds watch --open project1/webapp/index.html?sap-ui-xx-viewCache=false",
     "watch-polling_app": "cds watch --open polling_app/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "sapux": [

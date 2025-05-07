@@ -6,9 +6,11 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
-    "@sap/cds": "^7",
+    "@sap/cds": "^8.2",
     "express": "^4",
-    "FirstProject": "file:"
+    "FirstProject": "file:",
+    "@cap-js/hana": "^1",
+    "@sap/xssec": "^4"
   },
   "devDependencies": {
     "@cap-js/sqlite": "^1",
@@ -27,5 +29,17 @@
     "app/project1",
     "app/polling_app",
     "app/polling-app"
-  ]
+  ],
+  "cds": {
+    "sql": {
+      "native_hana_associations": false
+    },
+    "requires": {
+      "[production]": {
+        "db": "hana",
+        "auth": "xsuaa"
+      },
+      "html5-runtime": true
+    }
+  }
 }

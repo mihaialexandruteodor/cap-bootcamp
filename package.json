@@ -15,10 +15,11 @@
   },
   "scripts": {
     "start": "cds-serve",
-    "watch-polling_app": "cds watch --open polling_app/webapp/index.html?sap-ui-xx-viewCache=false"
+    "watch-polling-app": "cds watch --open polling-app/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "sapux": [
     "app/project1",
-    "app/polling_app"
+    "app/polling_app",
+    "app/polling-app"
   ]
 }

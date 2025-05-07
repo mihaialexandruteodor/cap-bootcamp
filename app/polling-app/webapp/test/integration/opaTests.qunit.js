@@ -2,10 +2,10 @@ sap.ui.require(
     [
         'sap/fe/test/JourneyRunner',
         'vote/pollingapp/test/integration/FirstJourney',
-		'vote/pollingapp/test/integration/pages/NationWideResultsList',
-		'vote/pollingapp/test/integration/pages/NationWideResultsObjectPage'
+		'vote/pollingapp/test/integration/pages/ResulstsList',
+		'vote/pollingapp/test/integration/pages/ResulstsObjectPage'
     ],
-    function(JourneyRunner, opaJourney, NationWideResultsList, NationWideResultsObjectPage) {
+    function(JourneyRunner, opaJourney, ResulstsList, ResulstsObjectPage) {
         'use strict';
         var JourneyRunner = new JourneyRunner({
             // start index.html in web folder
@@ -16,8 +16,8 @@ sap.ui.require(
         JourneyRunner.run(
             {
                 pages: { 
-					onTheNationWideResultsList: NationWideResultsList,
-					onTheNationWideResultsObjectPage: NationWideResultsObjectPage
+					onTheResulstsList: ResulstsList,
+					onTheResulstsObjectPage: ResulstsObjectPage
                 }
             },
             opaJourney.run

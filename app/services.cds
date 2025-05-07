@@ -1,2 +1,2 @@
 
-using from './polling_app/annotations';
+using from './polling-app/annotations';

@@ -13,11 +13,11 @@
     "sourceTemplate": {
       "id": "@sap/generator-fiori:lrop",
       "version": "1.17.4",
-      "toolsId": "ce4d3eaa-b4fd-45d5-92f6-8419c36230fb"
+      "toolsId": "eabb0fca-6ff1-4643-8fbb-6f4008db5064"
     },
     "dataSources": {
       "mainService": {
-        "uri": "/odata/v4/voter/",
+        "uri": "/odata/v4/analytic/",
         "type": "OData",
         "settings": {
           "annotations": [],
@@ -85,49 +85,50 @@
       "routes": [
         {
           "pattern": ":?query:",
-          "name": "NationWideResultsList",
-          "target": "NationWideResultsList"
+          "name": "ResulstsList",
+          "target": "ResulstsList"
         },
         {
-          "pattern": "NationWideResults({key}):?query:",
-          "name": "NationWideResultsObjectPage",
-          "target": "NationWideResultsObjectPage"
+          "pattern": "Resulsts({key}):?query:",
+          "name": "ResulstsObjectPage",
+          "target": "ResulstsObjectPage"
         }
       ],
       "targets": {
-        "NationWideResultsList": {
+        "ResulstsList": {
           "type": "Component",
-          "id": "NationWideResultsList",
+          "id": "ResulstsList",
           "name": "sap.fe.templates.ListReport",
           "options": {
             "settings": {
-              "contextPath": "/NationWideResults",
+              "contextPath": "/Resulsts",
               "variantManagement": "Page",
               "navigation": {
-                "NationWideResults": {
+                "Resulsts": {
                   "detail": {
-                    "route": "NationWideResultsObjectPage"
+                    "route": "ResulstsObjectPage"
                   }
                 }
               },
               "controlConfiguration": {
                 "@com.sap.vocabularies.UI.v1.LineItem": {
                   "tableSettings": {
-                    "type": "ResponsiveTable"
+                    "type": "AnalyticalTable"
                   }
                 }
-              }
+              },
+              "initialLoad": "Enabled"
             }
           }
         },
-        "NationWideResultsObjectPage": {
+        "ResulstsObjectPage": {
           "type": "Component",
-          "id": "NationWideResultsObjectPage",
+          "id": "ResulstsObjectPage",
           "name": "sap.fe.templates.ObjectPage",
           "options": {
             "settings": {
               "editableHeaderContent": false,
-              "contextPath": "/NationWideResults"
+              "contextPath": "/Resulsts"
             }
           }
         }

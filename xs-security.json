@@ -1,8 +1,8 @@
 {
   "scopes": [
     {
-      "name": "$XSAPPNAME.support",
-      "description": "support"
+      "name": "$XSAPPNAME.voter",
+      "description": "voter"
     },
     {
       "name": "$XSAPPNAME.admin",
@@ -12,10 +12,10 @@
   "attributes": [],
   "role-templates": [
     {
-      "name": "support",
+      "name": "voter",
       "description": "generated",
       "scope-references": [
-        "$XSAPPNAME.support"
+        "$XSAPPNAME.voter"
       ],
       "attribute-references": []
     },

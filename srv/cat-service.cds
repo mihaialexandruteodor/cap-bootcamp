@@ -7,7 +7,7 @@ service VoterService {
     @readonly
     entity NationWideResults as
         projection on vote.Candidate {
-            firstName,
+            key firstName,
             lastName,
             (
                 select COUNT(ID) from vote.Voter
@@ -18,7 +18,7 @@ service VoterService {
 
 }
 
-annotate AdminService.NationWideResults with @(requires: 'voter');
+annotate VoterService.NationWideResults with @(requires: 'voter');
 
 service AnalyticService {
     @readonly
@@ -48,6 +48,9 @@ annotate AnalyticService.Resulsts with @(Aggregation.ApplySupported: {
     ],
     AggregatableProperties: [{Property: ID}],
 });
+
+
+annotate AnalyticService.Resulsts with @(requires: 'voter');
 
 service AdminService {
 

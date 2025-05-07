@@ -6,7 +6,9 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
-    "@sap/cds": "^7",
+    "@cap-js/hana": "^1",
+    "@sap/cds": "^8.2",
+    "@sap/xssec": "^4",
     "express": "^4",
     "FirstProject": "file:"
   },
@@ -29,5 +31,17 @@
     "app/polling_app",
     "app/polling-app",
     "app/admin-app"
-  ]
+  ],
+  "cds": {
+    "sql": {
+      "native_hana_associations": false
+    },
+    "requires": {
+      "[production]": {
+        "db": "hana",
+        "auth": "xsuaa"
+      },
+      "html5-runtime": true
+    }
+  }
 }

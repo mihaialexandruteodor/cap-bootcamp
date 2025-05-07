@@ -18,6 +18,7 @@ service VoterService {
 
 }
 
+annotate AdminService.NationWideResults with @(requires: 'voter');
 
 service AnalyticService {
     @readonly
@@ -61,3 +62,4 @@ service AdminService {
 }
 
 annotate AdminService.Voter with @odata.draft.enabled;
+annotate AdminService.Voter with @(requires: 'admin');

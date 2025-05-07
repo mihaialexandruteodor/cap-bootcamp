@@ -41,6 +41,29 @@
         "db": "hana",
         "auth": "xsuaa"
       },
+      "[development]": {
+        "auth": {
+          "kind": "mocked",
+          "users": {
+            "VotingAdmin": {
+              "password": "ImTheAdmin",
+              "roles": [
+                "admin"
+              ]
+            },
+            "Robert": {
+              "roles": [
+                "voter"
+              ]
+            },
+            "Teodor": {
+              "roles": [
+                "voter"
+              ]
+            }
+          }
+        }
+      },
       "html5-runtime": true
     }
   }

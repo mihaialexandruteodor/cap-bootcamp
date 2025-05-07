@@ -34,7 +34,6 @@ annotate AnalyticService.Resulsts with @(Aggregation.ApplySupported: {
         'concat',
         'groupby',
         'filter',
-        'expand',
         'search'
     ],
 

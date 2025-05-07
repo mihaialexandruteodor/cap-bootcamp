@@ -3,26 +3,6 @@ annotate service.Resulsts with @(
     UI.LineItem : [
         {
             $Type : 'UI.DataField',
-            Value : age,
-            Label : 'age',
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : firstName,
-            Label : 'firstName',
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : gender,
-            Label : 'gender',
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : lastName,
-            Label : 'lastName',
-        },
-        {
-            $Type : 'UI.DataField',
             Value : votedCanditade_ID,
             Label : 'votedCanditade_ID',
         },
@@ -31,6 +11,23 @@ annotate service.Resulsts with @(
             Value : votingSection_ID,
             Label : 'votingSection_ID',
         },
-    ]
+    ],
+    Analytics.AggregatedProperty #ID_countdistinct : {
+        $Type : 'Analytics.AggregatedPropertyType',
+        Name : 'ID_countdistinct',
+        AggregatableProperty : ID,
+        AggregationMethod : 'countdistinct',
+        ![@Common.Label] : 'ID (Count Distinct Values)',
+    },
+    UI.Chart #alpChart : {
+        $Type : 'UI.ChartDefinitionType',
+        ChartType : #Pie,
+        Dimensions : [
+            votedCanditade_ID,
+        ],
+        DynamicMeasures : [
+            '@Analytics.AggregatedProperty#ID_countdistinct',
+        ],
+    },
 );
 

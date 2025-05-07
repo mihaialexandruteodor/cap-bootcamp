@@ -56,7 +56,8 @@
                 "voter"
               ]
             },
-            "Teodor": {
+            "teodor": {
+              "password": "admin",
               "roles": [
                 "voter"
               ]

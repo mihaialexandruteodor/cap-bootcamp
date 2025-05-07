@@ -16,6 +16,7 @@ aspect personalInfo {
   age       : Integer
 }
 
+
 entity Voter : cuid, personalInfo, managed {
   votingSection  : Association to one VotingSection;
   votedCanditade : Association to one Candidate;

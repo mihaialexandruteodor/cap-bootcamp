@@ -1,0 +1,1 @@
+using VoterService as service from '../../srv/cat-service';

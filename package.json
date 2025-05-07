@@ -21,11 +21,13 @@
   "scripts": {
     "start": "cds-serve",
     "test": "jest tests/test.js",
-    "watch-polling-app": "cds watch --open polling-app/webapp/index.html?sap-ui-xx-viewCache=false"
+    "watch-polling-app": "cds watch --open polling-app/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-admin-app": "cds watch --open admin-app/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "sapux": [
     "app/project1",
     "app/polling_app",
-    "app/polling-app"
+    "app/polling-app",
+    "app/admin-app"
   ]
 }

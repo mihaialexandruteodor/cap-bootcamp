@@ -23,6 +23,10 @@ annotate VoterService.NationWideResults with @(requires: 'voter');
 service AnalyticService {
     @readonly
     entity Resulsts as projection on vote.Voter;
+    @readonly
+    entity Sections as projection on vote.VotingSection;
+    @readonly
+    entity Candidates as projection on vote.Candidate;
 }
 
 

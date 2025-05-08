@@ -29,5 +29,58 @@ annotate service.Resulsts with @(
             '@Analytics.AggregatedProperty#ID_countdistinct',
         ],
     },
+    UI.SelectionFields : [
+        votedCanditade_ID,
+    ],
 );
+
+annotate service.Resulsts with {
+    votingSection @Common.Label : 'votingSection_ID'
+};
+
+annotate service.Candidates with {
+    party @Common.Label : '{i18n>PoliticalParty}'
+};
+
+annotate service.Candidates with {
+    gender @Common.Label : 'Candidate ge'
+};
+
+annotate service.Candidates with {
+    firstName @Common.Label : '{i18n>CandidateFirstName}'
+};
+
+annotate service.Sections with {
+    region @Common.Label : '{i18n>VotingRegion}'
+};
+
+annotate service.Resulsts with {
+    gender @Common.Label : '{i18n>VotersGender}'
+};
+
+annotate service.Resulsts with {
+    votedCanditade @(
+        Common.Label : 'votedCanditade_ID',
+        Common.ValueList : {
+            $Type : 'Common.ValueListType',
+            CollectionPath : 'Candidates',
+            Parameters : [
+                {
+                    $Type : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : votedCanditade_ID,
+                    ValueListProperty : 'ID',
+                },
+            ],
+            Label : 'Name',
+        },
+        Common.ValueListWithFixedValues : true,
+    )
+};
+
+annotate service.Candidates with {
+    ID @Common.Text : {
+        $value : firstName,
+        ![@UI.TextArrangement] : #TextFirst,
+    }
+};
 

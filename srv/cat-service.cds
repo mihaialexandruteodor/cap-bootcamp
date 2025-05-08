@@ -8,12 +8,12 @@ service VoterService {
     entity NationWideResults as
         projection on vote.Candidate {
             key firstName,
-            lastName,
-            (
-                select COUNT(ID) from vote.Voter
-                where
-                    votedCanditade.ID = Candidate.ID
-            ) as totalVotes : Integer
+                lastName,
+                (
+                    select COUNT(ID) from vote.Voter
+                    where
+                        votedCanditade.ID = Candidate.ID
+                ) as totalVotes : Integer
         }
 
 }
@@ -22,9 +22,19 @@ annotate VoterService.NationWideResults with @(requires: 'voter');
 
 service AnalyticService {
     @readonly
-    entity Resulsts as projection on vote.Voter;
+    entity Resulsts   as
+        projection on vote.Voter {
+            *,
+            votingSection.name       as voteSectionName,
+            votedCanditade.firstName as votedCanditadeFirstName,
+            votedCanditade.lastName  as votedCanditadeLastName,
+            votedCanditade.party     as votedCanditadeParty,
+
+        };
+
     @readonly
-    entity Sections as projection on vote.VotingSection;
+    entity Sections   as projection on vote.VotingSection;
+
     @readonly
     entity Candidates as projection on vote.Candidate;
 }
@@ -48,7 +58,11 @@ annotate AnalyticService.Resulsts with @(Aggregation.ApplySupported: {
     // Enforce restrictions on properties for aggregation or grouping
     GroupableProperties   : [
         votedCanditade_ID,
-        votingSection_ID
+        votingSection_ID,
+        voteSectionName,
+        votedCanditadeFirstName,
+        votedCanditadeLastName,
+        votedCanditadeParty
     ],
     AggregatableProperties: [{Property: ID}],
 });

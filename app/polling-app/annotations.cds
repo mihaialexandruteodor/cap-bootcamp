@@ -28,11 +28,114 @@ annotate service.Resulsts with @(
         DynamicMeasures : [
             '@Analytics.AggregatedProperty#ID_countdistinct',
         ],
+        DimensionAttributes : [
+            {
+                Dimension : votedCanditade_ID,
+            },
+        ],
     },
     UI.SelectionFields : [
         votedCanditade_ID,
         votingSection_ID,
+        votedCanditadeParty,
+        voteSectionName,
     ],
+    UI.Chart #visualFilter : {
+        $Type : 'UI.ChartDefinitionType',
+        ChartType : #Bar,
+        Dimensions : [
+            votedCanditade_ID,
+        ],
+        DynamicMeasures : [
+            '@Analytics.AggregatedProperty#ID_countdistinct',
+        ],
+    },
+    UI.PresentationVariant #visualFilter : {
+        $Type : 'UI.PresentationVariantType',
+        Visualizations : [
+            '@UI.Chart#visualFilter',
+        ],
+    },
+    UI.Chart #visualFilter1 : {
+        $Type : 'UI.ChartDefinitionType',
+        ChartType : #Bar,
+        Dimensions : [
+            votingSection_ID,
+        ],
+        DynamicMeasures : [
+            '@Analytics.AggregatedProperty#ID_countdistinct',
+        ],
+    },
+    UI.PresentationVariant #visualFilter1 : {
+        $Type : 'UI.PresentationVariantType',
+        Visualizations : [
+            '@UI.Chart#visualFilter1',
+        ],
+    },
+    UI.Chart #visualFilter2 : {
+        $Type : 'UI.ChartDefinitionType',
+        ChartType : #Bar,
+        Dimensions : [
+            votedCanditadeParty,
+        ],
+        DynamicMeasures : [
+            '@Analytics.AggregatedProperty#ID_countdistinct',
+        ],
+    },
+    UI.PresentationVariant #visualFilter2 : {
+        $Type : 'UI.PresentationVariantType',
+        Visualizations : [
+            '@UI.Chart#visualFilter2',
+        ],
+    },
+    UI.Chart #visualFilter3 : {
+        $Type : 'UI.ChartDefinitionType',
+        ChartType : #Bar,
+        Dimensions : [
+            votedCanditadeParty,
+        ],
+        DynamicMeasures : [
+            '@Analytics.AggregatedProperty#ID_countdistinct',
+        ],
+    },
+    UI.PresentationVariant #visualFilter3 : {
+        $Type : 'UI.PresentationVariantType',
+        Visualizations : [
+            '@UI.Chart#visualFilter3',
+        ],
+    },
+    UI.Chart #visualFilter4 : {
+        $Type : 'UI.ChartDefinitionType',
+        ChartType : #Bar,
+        Dimensions : [
+            voteSectionName,
+        ],
+        DynamicMeasures : [
+            '@Analytics.AggregatedProperty#ID_countdistinct',
+        ],
+    },
+    UI.PresentationVariant #visualFilter4 : {
+        $Type : 'UI.PresentationVariantType',
+        Visualizations : [
+            '@UI.Chart#visualFilter4',
+        ],
+    },
+    UI.Chart #visualFilter5 : {
+        $Type : 'UI.ChartDefinitionType',
+        ChartType : #Bar,
+        Dimensions : [
+            voteSectionName,
+        ],
+        DynamicMeasures : [
+            '@Analytics.AggregatedProperty#ID_countdistinct',
+        ],
+    },
+    UI.PresentationVariant #visualFilter5 : {
+        $Type : 'UI.PresentationVariantType',
+        Visualizations : [
+            '@UI.Chart#visualFilter5',
+        ],
+    },
 );
 
 annotate service.Resulsts with {
@@ -51,7 +154,7 @@ annotate service.Resulsts with {
             Label : 'region',
         },
         Common.ValueListWithFixedValues : true,
-    )
+        )
 };
 
 annotate service.Candidates with {
@@ -90,7 +193,11 @@ annotate service.Resulsts with {
             Label : 'Name',
         },
         Common.ValueListWithFixedValues : true,
-    )
+        Common.Text : {
+            $value : votedCanditadeFirstName,
+            ![@UI.TextArrangement] : #TextOnly
+        },
+        )
 };
 
 annotate service.Candidates with {
@@ -106,4 +213,36 @@ annotate service.Sections with {
         ![@UI.TextArrangement] : #TextFirst
     }
 };
+
+annotate service.Resulsts with {
+    votedCanditadeParty @(Common.Label : 'Party',
+        Common.ValueList #visualFilter : {
+            $Type : 'Common.ValueListType',
+            CollectionPath : 'Resulsts',
+            Parameters : [
+                {
+                    $Type : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : votedCanditadeParty,
+                    ValueListProperty : 'votedCanditadeParty',
+                },
+            ],
+            PresentationVariantQualifier : 'visualFilter3',
+        },
+)};
+
+annotate service.Resulsts with {
+    voteSectionName @(Common.Label : '{i18n>Section}',
+        Common.ValueList #visualFilter : {
+            $Type : 'Common.ValueListType',
+            CollectionPath : 'Resulsts',
+            Parameters : [
+                {
+                    $Type : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : voteSectionName,
+                    ValueListProperty : 'voteSectionName',
+                },
+            ],
+            PresentationVariantQualifier : 'visualFilter5',
+        },
+)};
 

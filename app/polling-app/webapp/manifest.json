@@ -127,6 +127,21 @@
                   "tableSettings": {
                     "type": "AnalyticalTable"
                   }
+                },
+                "@com.sap.vocabularies.UI.v1.SelectionFields": {
+                  "filterFields": {
+                    "votedCanditadeParty": {
+                      "visualFilter": {
+                        "valueList": "com.sap.vocabularies.Common.v1.ValueList#visualFilter"
+                      }
+                    },
+                    "voteSectionName": {
+                      "visualFilter": {
+                        "valueList": "com.sap.vocabularies.Common.v1.ValueList#visualFilter"
+                      }
+                    }
+                  },
+                  "layout": "CompactVisual"
                 }
               },
               "initialLoad": "Enabled",

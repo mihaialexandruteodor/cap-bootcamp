@@ -158,7 +158,13 @@ annotate service.Resulsts with {
 };
 
 annotate service.Candidates with {
-    party @Common.Label : '{i18n>PoliticalParty}'
+    party @(
+        Common.Label : '{i18n>PoliticalParty}',
+        Common.Text : {
+            $value : firstName,
+            ![@UI.TextArrangement] : #TextOnly,
+        },
+    )
 };
 
 annotate service.Candidates with {
@@ -203,19 +209,19 @@ annotate service.Resulsts with {
 annotate service.Candidates with {
     ID @Common.Text : {
         $value : firstName,
-        ![@UI.TextArrangement] : #TextFirst,
+        ![@UI.TextArrangement] : #TextOnly,
     }
 };
 
 annotate service.Sections with {
     ID @Common.Text : {
         $value : region,
-        ![@UI.TextArrangement] : #TextFirst
+        ![@UI.TextArrangement] : #TextOnly
     }
 };
 
 annotate service.Resulsts with {
-    votedCanditadeParty @(Common.Label : 'Party',
+    votedCanditadeParty @(Common.Label : '{i18n>Party}',
         Common.ValueList #visualFilter : {
             $Type : 'Common.ValueListType',
             CollectionPath : 'Resulsts',
@@ -228,7 +234,20 @@ annotate service.Resulsts with {
             ],
             PresentationVariantQualifier : 'visualFilter3',
         },
-)};
+        Common.ValueList : {
+            $Type : 'Common.ValueListType',
+            CollectionPath : 'Resulsts',
+            Parameters : [
+                {
+                    $Type : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : votedCanditadeParty,
+                    ValueListProperty : 'votedCanditadeParty',
+                },
+            ],
+            Label : 'Party',
+        },
+        Common.ValueListWithFixedValues : true,
+        )};
 
 annotate service.Resulsts with {
     voteSectionName @(Common.Label : '{i18n>Section}',
@@ -244,5 +263,29 @@ annotate service.Resulsts with {
             ],
             PresentationVariantQualifier : 'visualFilter5',
         },
-)};
+        Common.ValueList : {
+            $Type : 'Common.ValueListType',
+            CollectionPath : 'Resulsts',
+            Parameters : [
+                {
+                    $Type : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : voteSectionName,
+                    ValueListProperty : 'voteSectionName',
+                },
+            ],
+            Label : 'Section',
+        },
+        Common.ValueListWithFixedValues : true,
+        )};
+
+annotate service.Resulsts with {
+    firstName @Common.Text : {
+        $value : votedCanditadeParty,
+        ![@UI.TextArrangement] : #TextOnly
+    }
+};
+
+annotate service.Sections with {
+    name @Common.Text : region
+};
 

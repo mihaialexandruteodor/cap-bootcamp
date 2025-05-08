@@ -18,7 +18,7 @@ service VoterService {
 
 }
 
-annotate VoterService.NationWideResults with @(requires: 'voter');
+//annotate VoterService.NationWideResults with @(requires: 'voter');
 
 service AnalyticService {
     @readonly
@@ -68,14 +68,18 @@ annotate AnalyticService.Resulsts with @(Aggregation.ApplySupported: {
 });
 
 
-annotate AnalyticService.Resulsts with @(requires: 'voter');
+//annotate AnalyticService.Resulsts with @(requires: 'voter');
 
 service AdminService {
 
     entity Voter         as
         projection on vote.Voter {
             *,
-            votingSection.name as voteSectionName
+            votingSection.name       as voteSectionName,
+            votedCanditade.firstName as votedCanditadeFirstName,
+            votedCanditade.lastName  as votedCanditadeLastName,
+            votedCanditade.party     as votedCanditadeParty,
+
         };
 
     entity VotingSection as projection on vote.VotingSection;
@@ -83,4 +87,4 @@ service AdminService {
 }
 
 annotate AdminService.Voter with @odata.draft.enabled;
-annotate AdminService.Voter with @(requires: 'admin');
+//annotate AdminService.Voter with @(requires: 'admin');

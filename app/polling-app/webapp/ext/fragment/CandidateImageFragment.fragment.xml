@@ -1,5 +1,22 @@
-<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:macros="sap.fe.macros">
-	<VBox core:require="{ handler: 'vote/pollingapp/ext/fragment/CandidateImageFragment'}">
-		<Image id="_IDGenImage" src="../../images/{firstName}.jpg" alt="Candidate Image" width="100px" height="100px" />
-	</VBox>
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:macros="sap.fe.macros"
+>
+    <VBox
+        id="_IDGenVBox"
+        core:require="{ handler: 'vote/pollingapp/ext/fragment/CandidateImageFragment'}"
+    >
+        <Text
+            id="_IDGenBoldText"
+            text="{votedCanditade/firstName}"
+        />
+        <Image
+            id="_IDGenImage"
+            src="{votedCanditade/imageURL}"
+            alt="Candidate Image"
+            width="300px"
+            height="300px"
+        />
+    </VBox>
 </core:FragmentDefinition>

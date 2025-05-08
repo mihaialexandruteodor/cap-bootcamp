@@ -30,4 +30,5 @@ entity VotingSection : cuid, managed {
 
 entity Candidate : cuid, personalInfo, managed {
   party : String;
+  imageURL: String;
 }

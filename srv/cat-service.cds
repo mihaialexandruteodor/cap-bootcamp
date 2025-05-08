@@ -29,6 +29,7 @@ service AnalyticService {
             votedCanditade.firstName as votedCanditadeFirstName,
             votedCanditade.lastName  as votedCanditadeLastName,
             votedCanditade.party     as votedCanditadeParty,
+            votedCanditade.imageURL  as votedCanditadeImageURL,
 
         };
 
@@ -79,6 +80,7 @@ service AdminService {
             votedCanditade.firstName as votedCanditadeFirstName,
             votedCanditade.lastName  as votedCanditadeLastName,
             votedCanditade.party     as votedCanditadeParty,
+            votedCanditade.imageURL  as votedCanditadeImageURL,
 
         };
 

@@ -31,11 +31,27 @@ annotate service.Resulsts with @(
     },
     UI.SelectionFields : [
         votedCanditade_ID,
+        votingSection_ID,
     ],
 );
 
 annotate service.Resulsts with {
-    votingSection @Common.Label : 'votingSection_ID'
+    votingSection @(
+        Common.Label : '{i18n>SectionRegion}',
+        Common.ValueList : {
+            $Type : 'Common.ValueListType',
+            CollectionPath : 'Sections',
+            Parameters : [
+                {
+                    $Type : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : votingSection_ID,
+                    ValueListProperty : 'ID',
+                },
+            ],
+            Label : 'region',
+        },
+        Common.ValueListWithFixedValues : true,
+    )
 };
 
 annotate service.Candidates with {
@@ -60,7 +76,7 @@ annotate service.Resulsts with {
 
 annotate service.Resulsts with {
     votedCanditade @(
-        Common.Label : 'votedCanditade_ID',
+        Common.Label : '{i18n>CandidateName}',
         Common.ValueList : {
             $Type : 'Common.ValueListType',
             CollectionPath : 'Candidates',
@@ -81,6 +97,13 @@ annotate service.Candidates with {
     ID @Common.Text : {
         $value : firstName,
         ![@UI.TextArrangement] : #TextFirst,
+    }
+};
+
+annotate service.Sections with {
+    ID @Common.Text : {
+        $value : region,
+        ![@UI.TextArrangement] : #TextFirst
     }
 };
 

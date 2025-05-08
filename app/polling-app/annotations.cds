@@ -37,8 +37,6 @@ annotate service.Resulsts with @(
     UI.SelectionFields : [
         votedCanditade_ID,
         votingSection_ID,
-        votedCanditadeParty,
-        voteSectionName,
     ],
     UI.Chart #visualFilter : {
         $Type : 'UI.ChartDefinitionType',
@@ -160,11 +158,7 @@ annotate service.Resulsts with {
 annotate service.Candidates with {
     party @(
         Common.Label : '{i18n>PoliticalParty}',
-        Common.Text : {
-            $value : firstName,
-            ![@UI.TextArrangement] : #TextOnly,
-        },
-    )
+        )
 };
 
 annotate service.Candidates with {
@@ -236,12 +230,12 @@ annotate service.Resulsts with {
         },
         Common.ValueList : {
             $Type : 'Common.ValueListType',
-            CollectionPath : 'Resulsts',
+            CollectionPath : 'Candidates',
             Parameters : [
                 {
                     $Type : 'Common.ValueListParameterInOut',
                     LocalDataProperty : votedCanditadeParty,
-                    ValueListProperty : 'votedCanditadeParty',
+                    ValueListProperty : 'party',
                 },
             ],
             Label : 'Party',

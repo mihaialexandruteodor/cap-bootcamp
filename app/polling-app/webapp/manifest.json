@@ -172,7 +172,17 @@
           "options": {
             "settings": {
               "editableHeaderContent": false,
-              "contextPath": "/Resulsts"
+              "contextPath": "/Resulsts",
+              "content": {
+                "body": {
+                  "sections": {
+                    "CandidateImageFragment": {
+                      "template": "vote.pollingapp.ext.fragment.CandidateImageFragment",
+                      "title": "Image"
+                    }
+                  }
+                }
+              }
             }
           }
         }
